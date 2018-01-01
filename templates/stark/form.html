@@ -1,0 +1,42 @@
+<form method="post" class="form-horizontal" novalidate>
+    {% csrf_token %}
+    {% for dic in form %}
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">{{ dic.item.label }}</label>
+                <div class="col-sm-10" style="position: relative">
+                    {{ dic.item }}
+                    {% if dic.is_popup %}
+                        <div style="position: absolute;right: -5px;top: 8px;z-index: 9999">
+                            <a onclick="popUp('{{ dic.popup_url }}')" class="glyphicon glyphicon-plus"></a>  <!--注意要加引号，不然就会被当成变量了-->
+
+                        </div>
+                        {#                    判断如果是MOdelChoicesField是Fk#}
+                        {#                    判断如果是MOdelChoicesField是Fk#}
+                    {% endif %}
+                    <div class="err_msg">
+                         {{ dic.item.errors.0 }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="col-sm-offset-11 col-sm-1">
+        <input type="submit" class="btn btn-primary" value="提交">
+    </div>
+</form>
+<script>
+    function popupCallback(data) {
+        if (data.status){   //状态是True的时候才去创建
+            var op = document.createElement("option");
+            op.value = data.id;
+            op.text = data.text;
+            op.setAttribute("selected","selected");
+            document.getElementById(data.popupbackid).appendChild(op)
+        }
+    }
+    function popUp(url) {
+           var popupPage = window.open(url, url, "status=1, height:500, width:600, toolbar=0, resizeable=0");
+    }
+
+</script>

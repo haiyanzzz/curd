@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static '/css/stark_form.css' %}">
+    <script src="{% static "jquery-1.12.4.min.js" %}"></script>
+    <script src="{% static 'highcharts.js' %}"></script>
+    {% block css %} {% endblock %}
+</head>
+<body>
+<div class="container">
+    {% block body %} {% endblock %}
+</div>
+{% block js %} {% endblock %}
+</body>
+</html>

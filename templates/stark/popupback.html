@@ -1,0 +1,10 @@
+{% extends "stark/base.html" %}
+{% block js %}
+    <script>
+        (function () {
+            opener.popupCallback({{ json_result|safe }});
+            window.close()
+        })()
+    </script>
+{% endblock %}
+

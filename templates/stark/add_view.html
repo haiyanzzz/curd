@@ -1,0 +1,13 @@
+{% extends "stark/base.html" %}
+{% load change_form %}
+{% block body %}
+    <h3>添加页面</h3>
+    {#{% include "stark/form.html" %}#}
+    {#<form action="">#}
+    {#    {{ form }}#}
+    {#</form>#}
+    {% form config form %}
+    {#第一个form是函数名，第二个form是后端add_view里面传来的form,也就是form函数的参数#}
+{% endblock %}
+
+

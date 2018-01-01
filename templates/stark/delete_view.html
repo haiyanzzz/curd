@@ -1,0 +1,10 @@
+{% extends "stark/base.html" %}
+{% block body %}
+<h2>你确定要删除吗？</h2>
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="确定">
+    <a href="{{ quxiao_url }}"  class="btn btn-success">取消</a>
+</form>
+{% endblock %}
+
